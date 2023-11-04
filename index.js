@@ -11,9 +11,9 @@ const cors = require("cors");
 
 let origin = process.env.CLIENT_URL;
 
-if (process.env.NODE_ENV?.trim() === "development") {
-  origin = "http://localhost:3000";
-}
+// if (process.env.NODE_ENV?.trim() === "development") {
+//   origin = "http://localhost:3000";
+// }
 app.use(
   cors({
     credentials: true,
@@ -26,5 +26,5 @@ app.listen(PORT, () => {
   console.log(`Server started successfully at ${PORT}`);
 });
 app.get("/", (req, res) => {
-  res.send(`<h1> This is HOMEPAGE baby</h1>`);
+  res.send(`<h1> This is HOMEPAGE</h1>`);
 });
