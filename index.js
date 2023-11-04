@@ -7,17 +7,19 @@ const dbConnect = require("./config/database");
 dbConnect();
 
 app.use(express.json());
-const cors = require('cors');
+const cors = require("cors");
 
-let origin = 'http://localhost:3000';
+let origin = process.env.CLIENT_URL;
 
-if (process.env.NODE_ENV?.trim() === "production") {
-  origin = process.env.CLIENT_URL
+if (process.env.NODE_ENV?.trim() === "development") {
+  origin = "http://localhost:3000";
 }
-app.use(cors({
-  credentials: true,
-  origin
-}))
+app.use(
+  cors({
+    credentials: true,
+    origin,
+  })
+);
 
 app.use("/api/", linkRoutes);
 app.listen(PORT, () => {
